@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
+import Dodo from '../../assets/dodo.jpg';
 
 import Spacer from '../../components/Spacer';
 import ThemedText from '../../components/ThemedText';
@@ -14,6 +15,7 @@ const Profile = () => {
 
             <ThemedText>Time to start reading some books...</ThemedText>
             <Spacer />
+            <Image source={Dodo} style={{ width: 200, height: 200, borderRadius: 100 }} />
         </ThemedView>
     );
 };
