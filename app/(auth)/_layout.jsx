@@ -1,15 +1,14 @@
-import { Stack } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useUser } from '../../hooks/useUser';
 
 export default function AuthLayout() {
-
-  return (
-    <> 
-      <StatusBar value="auto" />
-      <Stack screenOptions={{ headerShown: false, animation: "none" }}
-      />
-    </>
-  )
-  
+    const { user } = useUser();
+    console.log('Auth Layout User:', user);
+    return (
+        <>
+            <StatusBar value="auto" />
+            <Stack screenOptions={{ headerShown: false, animation: 'none' }} />
+        </>
+    );
 }
-

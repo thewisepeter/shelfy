@@ -9,6 +9,7 @@ import {
 import { Link } from 'expo-router';
 import { Colors } from '../../constants/Colors';
 import { useState } from 'react';
+import { useUser } from '../../hooks/useUser';
 
 //themed components. These switch between dark and light depending on the device default
 import ThemedView from '../../components/ThemedView';
@@ -21,11 +22,19 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = () => {
-        // Handle login submission
+    const { login } = useUser();
+
+    const handleSubmit = async () => {
+        try {
+            await login(email, password);
+            console.log('Current user is', user);
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
         Keyboard.dismiss();
-        console.log('Login Form submitted', email, password);
+        console.log('Register Form submitted', email, password);
     };
+
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <ThemedView style={styles.container}>
